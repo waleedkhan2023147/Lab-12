@@ -1,1 +1,22 @@
-# Lab-12
+def check_range(value, min_val, max_val):
+    """
+    Check if the given value is within the specified range.
+
+    Parameters:
+    - value: The value to be checked.
+    - min_val: The minimum allowed value.
+    - max_val: The maximum allowed value.
+
+    Raises:
+    - AssertionError: If the value is not within the specified range.
+    """
+    assert min_val <= value <= max_val, f"Value {value} is not within the range [{min_val}, {max_val}]"
+
+# Example usage:
+try:
+    check_range(25, 0, 50)  # This will not raise an AssertionError
+    print("Value is within the specified range.")
+    
+    check_range(75, 0, 50)  # This will raise an AssertionError
+except AssertionError as e:
+    print(f"AssertionError: {e}")
