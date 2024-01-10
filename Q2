@@ -1,0 +1,33 @@
+"""
+Write a Python program that attempts to connect to a server.
+Use exception handling to catch potential network-related errors, such as socket.error or ConnectionError.
+"""
+
+import socket
+
+def connect_to_server(server_address, port):
+    """
+    Attempt to connect to a server.
+
+    Parameters:
+    - server_address: The IP address or hostname of the server.
+    - port: The port number for the connection.
+
+    Raises:
+    - socket.error: If there is an issue with the socket connection.
+    - ConnectionError: If there is an issue with the connection.
+    """
+    try:
+        # Attempting to create a socket and connect to the server
+        with socket.create_connection((server_address, port), timeout=5):
+            print(f"Connected to {server_address}:{port}")
+    except socket.error as e:
+        raise socket.error(f"Socket error: {e}")
+    except ConnectionError as e:
+        raise ConnectionError(f"Connection error: {e}")
+
+# Example usage:
+try:
+    connect_to_server("example.com", 80)  # Change to the actual server address and port
+except (socket.error, ConnectionError) as e:
+    print(f"Error: {e}")
