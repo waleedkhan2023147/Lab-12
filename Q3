@@ -1,0 +1,29 @@
+"""
+Write a Python program that reads data from a file.
+Use exception handling to catch and display an error message if the file does not exist.
+"""
+
+def read_file(file_path):
+    """
+    Read data from a file.
+
+    Parameters:
+    - file_path: The path to the file to be read.
+
+    Raises:
+    - FileNotFoundError: If the specified file does not exist.
+    """
+    try:
+        with open(file_path, 'r') as file:
+            data = file.read()
+            print("File content:")
+            print(data)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"The file '{file_path}' does not exist.")
+
+# Example usage:
+file_path = "example.txt"  # Change to the actual file path
+try:
+    read_file(file_path)
+except FileNotFoundError as e:
+    print(f"Error: {e}")
